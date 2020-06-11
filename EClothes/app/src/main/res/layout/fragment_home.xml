@@ -4,37 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
+    android:padding="5dp"
     tools:context=".ui.articles.ArticlesFragment">
-    <Button
-        android:id="@+id/details_btn"
-        android:text="go to details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
 
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/taken_image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <Button
-        android:id="@+id/btn_picture"
-        android:text="Open camera"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/orange"
-        android:textColor="@color/white"
-        android:padding="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="170dp"
+            android:src="@drawable/imagerobe"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/card_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Une robe pagne"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/card_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="une robe lorem ipsum dolor sum de soiree dolor color."
+                android:layout_below="@id/card_title"
+                />
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$ 200"
+                android:layout_below="@id/card_desc"
+                android:textStyle="italic"
+                android:textColor="@color/orange"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Voir details"
+                android:layout_below="@id/price"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

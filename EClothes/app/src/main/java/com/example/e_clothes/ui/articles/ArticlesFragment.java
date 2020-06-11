@@ -7,8 +7,11 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,53 +26,18 @@ import com.example.e_clothes.R;
 public class ArticlesFragment extends Fragment {
 
     private ArticlesViewModel homeViewModel;
-    Button camera_open_id;
-    ImageView click_image_id;
-    private static final int pic_id = 123;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+        String[] mobileArray = {"Android","IPhone","WindowsMobile","Blackberry",
+                "WebOS","Ubuntu","Windows7","Max OS X"};
+
         homeViewModel =
                 ViewModelProviders.of(this).get(ArticlesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        camera_open_id = root.findViewById(R.id.btn_picture);
-        click_image_id = root.findViewById(R.id.taken_image);
-
-        camera_open_id.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v)
-            {
-                Intent camera_intent
-                        = new Intent(MediaStore
-                        .ACTION_IMAGE_CAPTURE);
-
-                startActivityForResult(camera_intent, pic_id);
-            }
-        });
-
-        Button btnDetails = root.findViewById(R.id.details_btn);
-
-        btnDetails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent detailsActivity = new Intent(getContext(), ArticleDetails.class);
-                startActivity(detailsActivity);
-            }
-        });
-
         return root;
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-
-        if (requestCode == pic_id) {
-            Bitmap photo = (Bitmap)data.getExtras()
-                    .get("data");
-
-            click_image_id.setImageBitmap(photo);
-        }
-    }
 }
