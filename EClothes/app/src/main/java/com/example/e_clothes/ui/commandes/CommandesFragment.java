@@ -11,25 +11,50 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_clothes.R;
+import com.example.e_clothes.adaptaters.CommandeAdaptater;
+import com.example.e_clothes.entities.Article;
+import com.example.e_clothes.entities.Commande;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CommandesFragment extends Fragment {
 
-    private CommandeViewModel slideshowViewModel;
+    View view;
+    RecyclerView commandesList;
+    List<Commande> commandes;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                ViewModelProviders.of(this).get(CommandeViewModel.class);
-        View root = inflater.inflate(R.layout.article_details, container, false);
-        final TextView textView = root.findViewById(R.id.text_slideshow);
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
+
+        view = inflater.inflate(R.layout.fragment_commande, container, false);
+        commandesList = (RecyclerView) view.findViewById(R.id.commandes_list);
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        try {
+            CommandeAdaptater commandeAdapter = new CommandeAdaptater(getContext(), commandes);
+            commandesList.setLayoutManager(new LinearLayoutManager(getActivity()));
+            commandesList.setAdapter(commandeAdapter);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        commandes = new ArrayList<>();
+        commandes.add(new Commande(new Article("Robe rouge", "Rouge, Bleu, Vert, Noir", "$180", "X, XL, M, S", "une robe rouge courte d'un modele blablabla", R.drawable.dress1)));
+        commandes.add(new Commande(new Article("Robe bleu", "Rouge, Bleu, Vert, Noir", "$280", "X, XL, M, S", "une robe rouge courte d'un modele blablabla", R.drawable.dress2)));
     }
 }

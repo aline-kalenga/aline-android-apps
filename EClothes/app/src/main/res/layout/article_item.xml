@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:id="@+id/linearlayout">
+
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints"
+            android:layout_margin="5dp"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/article_image"
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/imagerobe"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                >
+                <LinearLayout
+                    android:id="@+id/header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/article_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Une robe pagne"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_add_shopping_cart_black_24dp"
+                        android:layout_gravity="end"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/article_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="une robe lorem ipsum dolor sum de soiree dolor color."
+                    android:layout_below="@id/header"
+                    />
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$ 200"
+                    android:layout_below="@id/article_desc"
+                    android:textStyle="italic"
+                    android:textColor="@color/orange"/>
+                <Button
+                    android:id="@+id/btn_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Voir details"
+                    android:layout_below="@id/price"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,37 @@
+[
+	{
+		"id": 1,
+		"name": "Robe Rouge",
+		"price": "180$",
+		"size": "X, XL, M",
+		"imgName": "dress1",
+		"description": "une robe rouge courte taille avec blabla" 
+	},
+
+	{
+		"id": 2,
+		"name": "Robe Bleu",
+		"price": "280$",
+		"size": "X, XL, M",
+		"imgName": "dress2",
+		"description": "une belle robe bleu longue taille avec blabla" 
+	},
+
+	{
+		"id": 3,
+		"name": "Robe Pagne",
+		"price": "80$",
+		"size": "X, XL, M",
+		"imgName": "dress3",
+		"description": "une robe en pagne courte taille avec blabla" 
+	},
+
+	{
+		"id": 4,
+		"name": "Robe de soiree",
+		"price": "480$",
+		"size": "X, XL, M",
+		"imgName": "dress4",
+		"description": "une belle robe de soiree  avec blabla" 
+	}
+]
