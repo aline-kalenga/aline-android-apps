@@ -20,15 +20,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_clothes.R;
 import com.example.e_clothes.entities.Article;
+import com.example.e_clothes.entities.Panier;
+import com.example.e_clothes.services.PanierService;
 import com.example.e_clothes.ui.ArticleDetails;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHolder> implements Serializable{
 
     Context context;
     List<Article> articles;
+    List<Article> cartArticles;
 
     public ArticleAdapter(Context context, List<Article> articles) {
         this.context = context;
@@ -44,7 +49,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(ArticleAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ArticleAdapter.ViewHolder holder, final int position) {
 
         final Article article = articles.get(position);
 
@@ -52,6 +57,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         holder.articleImage.setImageResource(articles.get(position).getImgId());
         holder.articlePrice.setText(articles.get(position).getArticlePrice());
         holder.articleDesc.setText(articles.get(position).getDescription());
+
+        holder.cartIcone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(view.getContext(),"click on item: "+article.getDescription(),Toast.LENGTH_LONG).show();
+            }
+        });
 
         holder.btnDetails.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +84,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView articleImage;
+        public ImageView cartIcone;
         public TextView articleName;
         public TextView articlePrice;
         public TextView articleDesc;
@@ -80,6 +93,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         public ViewHolder(View itemView) {
             super(itemView);
             this.articleImage = (ImageView) itemView.findViewById(R.id.article_image);
+            this.cartIcone = (ImageView) itemView.findViewById(R.id.cart);
             this.articleName = (TextView) itemView.findViewById(R.id.article_title);
             this.articlePrice = (TextView) itemView.findViewById(R.id.price);
             this.articleDesc = (TextView) itemView.findViewById(R.id.article_desc);

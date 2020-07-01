@@ -1,5 +1,6 @@
 package com.example.e_clothes.ui.articles;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.e_clothes.R;
 import com.example.e_clothes.adaptaters.ArticleAdapter;
 import com.example.e_clothes.entities.Article;
+import com.example.e_clothes.services.PanierService;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,6 +29,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ArticlesFragment extends Fragment {
 
